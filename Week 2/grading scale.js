@@ -33,3 +33,16 @@ if (gscore == 'A') {
     body.setAttribute("style", "background-color: white;");
 }
 document.close();
+
+
+var a = 16;
+var b = 10;
+if (a < 20) {
+    if (b < a) {
+        alert("Time to buy some B!");
+    } else {
+        alert("Time to buy some A!");
+    }
+} else {
+    alert("You probably shouldn't");
+}
