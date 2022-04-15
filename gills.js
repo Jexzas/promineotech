@@ -1,0 +1,12 @@
+var body = document.getElementById("stuff");
+var poundage = prompt("How much do you weigh in pounds?");
+poundage = parseFloat(poundage);
+const avgHumanDensity = 985; //kg/m^3
+const liter = 1000; //cubic meter
+const gillPerLiter = 8.33; 
+var kg = poundage / 2.2;
+var yourMetrage = kg / avgHumanDensity;
+yourMetrage = yourMetrage.toFixed(2);
+var yourVolume = yourMetrage * 1000 * 8.33;
+yourVolume = yourVolume.toFixed(2);
+body.innerHTML = `<h1>Your volume, using average human density, would be around ${yourVolume} gills.</h1>`;

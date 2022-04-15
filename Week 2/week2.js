@@ -4,10 +4,12 @@ var nameArray = [
     "Steve"
 ];
 
-for (i in nameArray) {
-    console.log(i);
-}
+// for (i in nameArray) {
+//     console.log(i);
+// }
 
 for (name of nameArray) {
     console.log(name);
 }
+
+// outputs "Jimmy", "Molly", "Steve"
