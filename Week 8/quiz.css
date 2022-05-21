@@ -1,0 +1,21 @@
+html {
+    background-color: blue!important;
+}
+
+#text-2 {
+    font-color: red;
+}
+
+.box div {
+    margin: 25%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+li:hover {
+    background-color: white;
+}
+
+table tr:nth-child(3) {
+    background-color: grey;
+}
