@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 10 Assignment</title>
+    <link type="text/css" rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="container p-1">
+        <div class="form-group">
+            <label for="userInput">Give a Rapper's Name:</label>
+            <input type="text" class="form-control" id="userInput1" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="userInput">What's their best album?</label>
+            <input type="text" class="form-control" id="userInput2" placeholder="Good album">
+        </div>
+        <div class="form-group">
+            <label for="userInput">What's their worst album?</label>
+            <input type="text" class="form-control" id="userInput3" placeholder="Bad album">
+        </div>
+        <button type="submit" id="userSubmit" class="my-1 form-control btn btn-dark">Submit</button>
+    </div>
+    <div class="container-fluid">
+        <table class="table table-dark table-striped" id="userTable">
+            <tr>
+                <th>Rapper Name:</th>
+                <th>Best Record:</th>
+                <th>Worst Record:</th>
+                <th>Date Added:</th>
+            </tr>
+            
+        </table>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
