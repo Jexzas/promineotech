@@ -4,7 +4,7 @@ let xTurn = 'X';
 let oTurn = 'O';
 // x turn will be the even turn, o turn will be the odd turn
 let whoseTurn = '';
-let winner;
+let winner = '';
 let board = $('#tictactoe');
 
 
@@ -21,7 +21,7 @@ function gamePlay() {
     bannerText.text(whoseTurn);
     $('td').on('click', () => {
         let target = $(event.target);
-        if (target.text() !== 'X' && target.text() !== 'O') {
+        if (target.text() !== 'X' && target.text() !== 'O' && turnCounter !== 9) {
             if (whoseTurn == `It is X's turn!`) {
                 target.text(xTurn);
                 whoseTurn = `It is O's turn!`;
@@ -33,10 +33,11 @@ function gamePlay() {
                 bannerText.text(whoseTurn);
             }
         }
-        checkForWinner();
         turnCounter++;
+        checkForWinner();
     
     });
+
 }
 
 
@@ -44,7 +45,6 @@ $('#startButton').click(() => {gamePlay()});
 $('#resetButton').click(() => {reset()});
 
 function checkForWinner() {
-    let matchFound
     let row1 = [$('#square1'), $('#square2'), $('#square3')];
     let row2 = [$('#square4'), $('#square5'), $('#square6')];
     let row3 = [$('#square7'), $('#square8'), $('#square9')];
@@ -65,6 +65,8 @@ function checkForWinner() {
     }
     if (winner) {
         bannerText.text(`${winner} is the winner!`);
-    }
+    } else if (winner == '' && turnCounter == 9) {
+        bannerText.text(`It's a draw!`);
+    } 
 
 }
