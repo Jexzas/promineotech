@@ -80,6 +80,8 @@ function createSpeciesDOM(species) {
     });
 
     speciesNumber++;
+    $('#species').val("");
+    $('#variety').val("");
 
 
 }
