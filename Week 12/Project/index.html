@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 12 Project</title>
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    <nav class="nav bg-dark navbar-nav text-white text-center"><h1>Woodshop Manager Pro</h1></nav>
+    <div class="row justify-content-center container-fluid bg-success mx-auto" id="entry">
+        <form class="form-group text-white col-md w-50 text-center p-1">
+            <h2 id="diff">Add a Species</h2><br>
+            <label for="species" class="col-sm"><h3>Species name</h3></label>
+            <input type="text/css" class="form-control" id="species"> 
+            <label for="variety" class="col-sm"><h3>Hardwood or Softwood</h3></label>
+            <input type="text/css" class="form-control" id="variety">
+            <button type="button" class="btn-primary btn form-control my-0" id="submit">Add Entry</button>
+        </form>
+    </div>
+    <div class="row" id="app"></div>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="index.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

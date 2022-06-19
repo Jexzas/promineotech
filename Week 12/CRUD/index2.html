@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD house</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+</head> 
+<body class="container">
+    
+    <div id="formDiv" class="jumbotron">
+        <form class="form-group m-1 p-1" id="form">
+            <input type="text" id="firstName" class="m-1 form-control" placeholder="First Name">
+            <input type="text" id="lastName" class="m-1 form-control" placeholder="Last Name">
+            <input type="text" id="studentEmail" class="m-1 form-control" placeholder="Email Address">
+            <button id="button-submit" class="form-control btn btn-dark">Press a Me, Mario</button> 
+        </form>
+
+    </div>
+
+    <div id="app">
+
+    </div>
+   
+
+    <script>
+        let counter = 0;
+        const baseURL = 'https://crudcrud.com/api/8f2977d56763463794c35ba2bd90c0ba';
+        const button = $('#button-submit');
+        class Student {
+            constructor(firstName, lastName, studentID, studentEmail) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.studentID = studentID;
+                this.studentEmail = studentEmail;
+            }
+            createStudent() {
+                fetch(`${baseURL}/students`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        'firstName': `${this.firstName}`,
+                        'lastName': `${this.lastName}`,
+                        'studentID': `${this.studentID}`,
+                        'email': `${this.studentEmail}`
+                    })
+                }).then( res => res.json() )
+                  .then( res => console.log(res))
+            }
+        }
+
+        function getAllStudents() {
+            fetch(`${baseURL}/students`)
+            .then ( res => res.json())
+            .then (res => console.log(res))
+        };
+
+
+        button.on('click', () => {
+            let fname = $('#firstName').val();
+            let lname = $('#lastName').val();
+            let stuID = counter;
+            let studentMail = $('#studentEmail').val();
+            let newStudent = new Student(fname, lname, stuID, studentMail);
+            newStudent.createStudent();
+            counter++;
+        });
+        
+    </script>
+    <script src="script.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
