@@ -68,13 +68,12 @@ function createSpeciesDOM(species) {
   
     </div>
     <div class='container-fluid mx-0'>
-        <button id='speciesDelete' type='button' class='btn btn-danger col-4'>Delete</button>
+        <button id='speciesDelete${speciesNumber}' type='button' class='btn btn-danger col-4'>Delete</button>
     </div>
     
     `;
-    let speciesDeleteButton = $('#speciesDelete');
     app.prepend(domAction);
-    $(document).on('click', '#speciesDelete', () => {
+    $(document).on('click', `#speciesDelete${speciesNumber}`, () => {
         domAction.remove();
         species.deleteMe();
     });
