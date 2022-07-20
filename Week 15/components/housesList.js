@@ -6,7 +6,7 @@ import { HouseApi } from '../api/houseAPI';
 
 export default function HousesList(props) {
     const [ houses, getHouses ] = useState([]);
-    useEffect(() => fetchHouses());
+    useEffect(() => fetchHouses(), []);
 
     const fetchHouses = async () => {
         const addHouses = await HouseApi.get();
