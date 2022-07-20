@@ -1,29 +1,35 @@
-import { Route, Switch } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+import { Route, Routes } from 'react-router-dom';
+import CallAPI from '../rest/api';
 
 export default function RightContainer() {
     return (
-        <Switch>
-        <Route exact path="/">
-            <Home /> 
-        </Route>
-        <Route path="/Refrigerator">
-            <Area location="Refrigerator"/>
-        </Route>
-        <Route path="/Pantry">
-            <Area location="Pantry"/>
-        </Route>
-        <Route path="/Freezer">
-            <Area location="Freezer"/>
-        </Route>
-        <Route path="/FruitsBasket">
-            <Area location="FruitsBasket"/>
-        </Route>
-        </Switch>
+        <Routes>
+        <Route exact path="/" element={<Home />}/>
+        <Route path="/Refrigerator" element={<Area location="Refrigerator"/> }/>
+        <Route path="/Pantry" element={<Area location="Pantry"/>}/>
+        <Route path="/Freezer" element={<Area location="Freezer"/>}/>
+        <Route path="/Fruits%20Basket"  element={<Area location="Fruits Basket"/>}/>
+        </Routes>
     )
 }
 
-function Home () {
+function Home (props) {
     return (
         <h1>You have not selected an area to view.</h1>
     )
 }
+
+function Area (props) {
+    const { location } = props;
+    // const deleteItem = () => {
+    //     CallAPI.put()
+    // }
+    return (
+        <Card>
+            <Card.Header>{location}</Card.Header>
+
+        </Card>
+    )
+}
+

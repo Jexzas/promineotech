@@ -41,14 +41,23 @@
 #root {
   height: 100vh;
   width: 100vw;
-  background-color: #f4fd84;
+  background-color: #FAFDA9;
 }
 
 #banner {
-  background-color: #4A23A0;
+  background-color: #AF5784;
+
 }
 
 #banner h1 {
   color: white;
   font-size: 4rem;
+}
+
+.areaCard {
+  background-color: #324F00;
+  color: white;
+  padding: 3rem!important;
+  margin: 1rem;
+  font-size: 3rem;
 }

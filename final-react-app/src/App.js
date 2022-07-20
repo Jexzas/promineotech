@@ -6,6 +6,7 @@ import { Col, Row, Container, Card, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import Banner from './components/banner';
 import RightContainer from './components/rightContainer';
+import { Link } from 'react-router-dom';
 
 function App() {
   let [ area ] = useState('');
@@ -24,7 +25,6 @@ function App() {
     const addAreas = await CallAPI.get();
     setAreas(...areas, addAreas);
   }
-
 
 
   return (
@@ -55,8 +55,9 @@ function AreasList(props) {
     {
       areas.map((area, index) => {
         return (
-          <Card className="areaCard p-2" bg="primary" text="white" key={index}>
-            <Card.Header>{area.name}</Card.Header>
+          <Card className="areaCard p-2 text-center" key={index}>
+            <Link to={area.name}>{area.name}</Link>
+            {/* <ItemsList area={area.name}></ItemsList> */}
           </Card>
         )
         console.log(area.name);
@@ -72,7 +73,7 @@ function ItemsList(props) {
   area.map((item, index) => {
     return (
       <Card className="itemCard" key={index}>
-        <Card.Header>{item.name}</Card.Header>
+        <Card.Header><Container>{item.name}</Container></Card.Header>
         <Button variant="danger">Delete</Button>
       </Card>
     )
