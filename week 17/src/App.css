@@ -36,21 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.bottomContainer {
-  width: 100vw;
-
-}
-
-.carded {
-  background-color: rgb(241, 42, 132);
-  height: 7rem;
-  text-align: center;
-  justify-content: center;
-  width: 10rem;
-  font-size: 1.5rem;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.items {
-}

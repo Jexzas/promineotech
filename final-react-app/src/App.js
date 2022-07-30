@@ -1,86 +1,50 @@
 import logo from './logo.svg';
 import './App.css';
-import CallAPI from './rest/api';
+import { CallAPI } from './rest/api';
 import React from 'react';
-import { Col, Row, Container, Card, Button } from 'react-bootstrap';
+import { Col, Row, Container, Card, Button, Navbar } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import Banner from './components/banner';
-import RightContainer from './components/rightContainer';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import AreaList from './components/AreaList';
+import ItemList from './components/ItemList';
 
 function App() {
-  let [ area ] = useState('');
-  let [ areas, setAreas ] = useState([]);
-  
+  const [ areas, setAreas ] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      await fetchAreas();
-      console.log(areas);
-    }
-    fetchData();
-  }, []);
 
   const fetchAreas = async () => {
-    const addAreas = await CallAPI.get();
-    setAreas(...areas, addAreas);
+    let newAreas = await CallAPI.get();
+    setAreas(...areas, newAreas);
   }
 
+  useEffect(() => {
+    fetchAreas();
 
-  return (
-    <Container bg="light" fluid className='fullApp'>
-      <Row bg="primary" text='white'>
-        <Banner />
-      </Row>
-      <Row bg="dark" text="white">
-        {/* <Navbar /> */}
-      </Row>
-      <Row>
-        <Col sm={4}>
-          <AreasList areas={areas} />
-        </Col>
-        <Col sm={8}>
-          <RightContainer />
-        </Col>
-      </Row>
+  }, []);
 
-    </Container>
-  );
-}
 
-function AreasList(props) {
-  let { areas } = props;
   return (
     <>
-    {
-      areas.map((area, index) => {
-        return (
-          <Card className="areaCard p-2 text-center" key={index}>
-            <Link to={area.name}>{area.name}</Link>
-            {/* <ItemsList area={area.name}></ItemsList> */}
-          </Card>
-        )
-        console.log(area.name);
-      })
-    }
+    <Navbar bg="dark" text="white" className="container-fluid row mx-auto"><NavLink to="/Home" className="text-decoration-none"><h1>Grocery Pro</h1></NavLink></Navbar>
+    <Navbar className="bg-danger container-fluid row mx-auto">
+      <Routes>
+        <Route exact path={"/Home" || "/"} element={<h1>Home</h1>}/>
+        <Route path="Refrigerator" element={<h1>Refrigerator</h1>}/>
+        <Route path="Pantry" element={<h1>Pantry</h1>}/>
+        <Route path="Freezer" element={<h1>Freezer</h1>}/>
+        <Route path="FruitsBasket" element={<h1>Fruits Basket</h1>}/> 
+      </Routes>
+      </Navbar>
+    <Container fluid className='row mx-auto p-0 bottomContainer'>
+      <Container className='col-sm-4 p-2 text-center bg-primary'>
+        <AreaList areas={areas} className="mx-auto my-auto"></AreaList>
+      </Container>
+      <Container className='col-sm-8 p-4 bg-success'>
+        <ItemList fetchAreas={fetchAreas} areas={areas}></ItemList>
+      </Container>
+    </Container>
     </>
   )
-
 }
-
-function ItemsList(props) {
-  let { area }  = props;
-  area.map((item, index) => {
-    return (
-      <Card className="itemCard" key={index}>
-        <Card.Header><Container>{item.name}</Container></Card.Header>
-        <Button variant="danger">Delete</Button>
-      </Card>
-    )
-  })
-}
-
-
-
-
 export default App;
+
